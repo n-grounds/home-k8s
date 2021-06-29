@@ -1,6 +1,12 @@
 # home-k8s
 Setup and Documentation of home k8s test cluster.  This is as much a documentation for future me so I know what I did, as it is intended for anyone else to learn from.
 
+The cluster is made up of five old desktop computer, Dell Optiplex 380, each with a 300 GB disk which I came by very cheaply.  Upon them I installed Ubuntu Server 20.04.2, along with GluterFS (for replicated, shared disk) and microk8s (for a kubernetes implementation).  To access k8s resources from outside the cluster (i.e., the rest of my home network) I used MetalLB which is conveniently enabled via microk8s with a single command.
+
+Here's a simple diagram of the setup:
+
+![Diagram of my k8s cluster setup at home](diagram.svg)
+
 # GlusterFS Setup
 GlusterFS is a file-system driver for clustering servers' worth of disk over a network for redudancy/replication or striping such that the collection of disks is then presented as a single unit.
 

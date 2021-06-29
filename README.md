@@ -95,3 +95,15 @@ This, however, causes the dashboard to be run in such a way that to expose it ex
 
 Using the included [pv-10.yaml](pv-10.yaml) PersistentVolume definition yaml, the GlusterFS volume mounted to `/data/data-10` is made available to k8s pods.
 
+# k8s Pods and Services
+
+Here are some of the pods/services/etc. I run in my private k8s cluster.
+
+## Minecraft Server
+
+Based off the docker image provided at https://hub.docker.com/r/itzg/minecraft-server I setup and run a Minecraft Java server in k8s using the following k8s definitions:
+
+* [mc-server-data-pvc.yaml](mc-server-data-pvc.yaml)
+* [mc-server-deployment.yaml](mc-server-deployment.yaml)
+* [mc-service-service.yaml](mc-server-service.yaml)
+

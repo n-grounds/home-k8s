@@ -89,9 +89,9 @@ microk8s also comes with a nice dashboard service that can be enabled with:
 microk8s enable dashboard
 ```
 
-This, however, causes the dashboard to be run in such a way that to expose it externally (outside the k8s cluster) port-forwarding needs to be used (e.g., https://microk8s.io/docs/addon-dashboard).  But with MetalLB in place the dashboard can be exposed via a LoadBalancer, hence a re-written service definition yaml, [kubernetes-dashboard-service.yaml|kubernetes-dashboard-service.yaml].
+This, however, causes the dashboard to be run in such a way that to expose it externally (outside the k8s cluster) port-forwarding needs to be used (e.g., https://microk8s.io/docs/addon-dashboard).  But with MetalLB in place the dashboard can be exposed via a LoadBalancer, hence a re-written service definition yaml, [kubernetes-dashboard-service.yaml](kubernetes-dashboard-service.yaml).
 
 ## Using GlusterFS volume as PersistentVolume in k8s
 
-Using the included [pv-10.yaml|pv-10.yaml] PersistentVolume definition yaml, the GlusterFS volume mounted to `/data/data-10` is made available to k8s pods.
+Using the included [pv-10.yaml](pv-10.yaml) PersistentVolume definition yaml, the GlusterFS volume mounted to `/data/data-10` is made available to k8s pods.
 

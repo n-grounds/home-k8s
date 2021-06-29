@@ -61,5 +61,37 @@ Once the GlusterFS volume is created, each server simply needs to mount it local
 mount -t glusterfs localhost:/glusterv-10 /data/data-10
 ```
 
-Henceforth any read of /data/data-10 will happy locally on each server, but any write will be replicated to all four other servers keeping the shared GlusterFS volume in sync across all five servers.
+Henceforth any read of `/data/data-10` will happy locally on each server, but any write will be replicated to all four othe servers keeping the shared GlusterFS volume in sync across all five servers.
+
+I also put settings for this mount in `/etc/fstab` so it is auto-mounted on boot.
+
+# microk8s Setup
+
+One of the more frustrating things when first attempting to use microk8s was that all my pods seemed to be unable to resolve DNS hostnames and hence couldn't access Internet resources.  This is by design and in microk8s you have to enale the dns plug-in:
+
+```
+microk8s enable dns
+```
+
+## Using MetalLB in microk8s
+
+MetalLB is a LoadBalancer k8s resource provider that manages a pool of IP addresses which is uses when a service is deployed that needs a LoadBalancer.  To setup MetalLB in microk8s you simply enable its plug-in and tell it the IP address range you want it to manage/use:
+
+```
+microk8s enable metallb:192.168.1.2-192.168.1.100
+```
+
+## microk8s Dashboard
+
+microk8s also comes with a nice dashboard service that can be enabled with:
+
+```
+microk8s enable dashboard
+```
+
+This, however, causes the dashboard to be run in such a way that to expose it externally (outside the k8s cluster) port-forwarding needs to be used (e.g., https://microk8s.io/docs/addon-dashboard).  But with MetalLB in place the dashboard can be exposed via a LoadBalancer, hence a re-written service definition yaml, [kubernetes-dashboard-service.yaml|kubernetes-dashboard-service.yaml].
+
+## Using GlusterFS volume as PersistentVolume in k8s
+
+Using the included [pv-10.yaml|pv-10.yaml] PersistentVolume definition yaml, the GlusterFS volume mounted to `/data/data-10` is made available to k8s pods.
 

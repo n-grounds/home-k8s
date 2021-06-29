@@ -1,0 +1,35 @@
+{
+    "apiVersion": "v1",
+    "kind": "Service",
+    "metadata": {
+        "annotations": {
+            "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"v1\",\"kind\":\"Service\",\"metadata\":{\"annotations\":{},\"labels\":{\"k8s-app\":\"kubernetes-dashboard\"},\"name\":\"kubernetes-dashboard\",\"namespace\":\"kube-system\"},\"spec\":{\"ports\":[{\"port\":443,\"targetPort\":8443}],\"selector\":{\"k8s-app\":\"kubernetes-dashboard\"}}}\n"
+        },
+        "creationTimestamp": "2021-06-22T03:04:23Z",
+        "labels": {
+            "k8s-app": "kubernetes-dashboard"
+        },
+        "name": "kubernetes-dashboard",
+        "namespace": "kube-system",
+        "resourceVersion": "15656",
+        "selfLink": "/api/v1/namespaces/kube-system/services/kubernetes-dashboard",
+        "uid": "f90a1459-114f-4219-a909-11197dfa31c1"
+    },
+    "spec": {
+        "ports": [
+            {
+                "port": 443,
+                "protocol": "TCP",
+                "targetPort": 8443
+            }
+        ],
+        "selector": {
+            "k8s-app": "kubernetes-dashboard"
+        },
+        "sessionAffinity": "None",
+        "type": "LoadBalancer"
+    },
+    "status": {
+        "loadBalancer": {}
+    }
+}
